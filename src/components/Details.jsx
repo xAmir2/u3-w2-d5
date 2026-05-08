@@ -79,7 +79,7 @@ const Details = () => {
             </Col>
 
             <Col md={4}>
-              <Card className="city-card border-0 text-light rounded-4">
+              <Card className="city-card2 border-0 text-light rounded-4">
                 <Card.Body>
                   <h5 className="mb-4">Weather Details</h5>
 
@@ -106,10 +106,10 @@ const Details = () => {
         </Card.Body>
       </Card>
 
-      <div className="mt-5">
+      <div className="mt-5 text-center">
         <h2 className="fw-bold mb-4 text-light">5-Day Forecast</h2>
 
-        <Row className="g-4">
+        <Row className="g-4 d-flex justify-content-center">
           {forecast.map((item) => (
             <Col xs={12} sm={6} lg={4} xl={2} key={item.dt}>
               <Card className="h-100 border-0 shadow city-card text-light rounded-4">

@@ -12,6 +12,15 @@ body {
   background-color: rgba(255, 255, 255, 0.08);
   color: white;
   backdrop-filter: blur(10px);
+  border: 1px solid white !important;
+}
+
+.city-card2 {
+  cursor: pointer;
+  transition: all 0.3s ease;
+  border-radius: 20px;
+  background-color: transparent;
+  color: white;
 }
 
 .city-card:hover {
