@@ -11,7 +11,7 @@ const Details = () => {
   const apiKey = "5134f57117165bd6cea5e775316cde15";
 
   useEffect(() => {
-    // CURRENT WEATHER
+    
     fetch(
       `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`,
     )
