@@ -2,6 +2,7 @@ body {
   background: linear-gradient(to bottom, #a2beff, #1e293b);
   min-height: 100vh;
   color: white;
+  font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
 }
 
 .city-card {

@@ -53,9 +53,10 @@ const Details = () => {
     );
   }
 
+  const capitalize = (text) => text.charAt(0).toUpperCase() + text.slice(1);
+
   return (
     <Container className="py-5">
-      {/* CURRENT WEATHER */}
       <Card className="border-0 shadow-lg city-card text-light rounded-4 overflow-hidden">
         <Card.Body className="p-5">
           <Row className="align-items-center">
@@ -73,7 +74,7 @@ const Details = () => {
               </div>
 
               <p className="fs-5 text-light fst-italic">
-                {weather.weather[0].description}
+                {capitalize(weather.weather[0].description)}
               </p>
             </Col>
 
@@ -105,7 +106,6 @@ const Details = () => {
         </Card.Body>
       </Card>
 
-      {/* FORECAST */}
       <div className="mt-5">
         <h2 className="fw-bold mb-4 text-light">5-Day Forecast</h2>
 
@@ -136,7 +136,7 @@ const Details = () => {
                   </Badge>
 
                   <p className="small text-light fst-italic mb-2">
-                    {item.weather[0].description}
+                    {capitalize(item.weather[0].description)}
                   </p>
                 </Card.Body>
               </Card>
