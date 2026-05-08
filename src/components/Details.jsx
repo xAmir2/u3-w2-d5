@@ -11,6 +11,7 @@ const Details = () => {
   const apiKey = "5134f57117165bd6cea5e775316cde15";
 
   useEffect(() => {
+    // CURRENT WEATHER
     fetch(
       `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`,
     )
@@ -24,11 +25,23 @@ const Details = () => {
     )
       .then((res) => res.json())
       .then((data) => {
-        const dailyForecast = data.list.filter((item) =>
-          item.dt_txt.includes("12:00:00"),
-        );
+        const today = new Date().toISOString().split("T")[0];
 
-        setForecast(dailyForecast);
+        const grouped = {};
+
+        data.list.forEach((item) => {
+          const date = item.dt_txt.split(" ")[0];
+
+          if (date === today) return;
+
+          if (!grouped[date]) {
+            grouped[date] = item;
+          }
+        });
+
+        const next5Days = Object.values(grouped).slice(0, 5);
+
+        setForecast(next5Days);
       });
   }, [city]);
 
@@ -42,6 +55,7 @@ const Details = () => {
 
   return (
     <Container className="py-5">
+      {/* CURRENT WEATHER */}
       <Card className="border-0 shadow-lg city-card text-light rounded-4 overflow-hidden">
         <Card.Body className="p-5">
           <Row className="align-items-center">
@@ -80,6 +94,10 @@ const Details = () => {
                     🌡 Feels like:{" "}
                     <strong>{Math.round(weather.main.feels_like)}°C</strong>
                   </p>
+
+                  <p className="mb-0">
+                    ☁ Pressure: <strong>{weather.main.pressure} hPa</strong>
+                  </p>
                 </Card.Body>
               </Card>
             </Col>
@@ -87,6 +105,7 @@ const Details = () => {
         </Card.Body>
       </Card>
 
+      {/* FORECAST */}
       <div className="mt-5">
         <h2 className="fw-bold mb-4 text-light">5-Day Forecast</h2>
 
